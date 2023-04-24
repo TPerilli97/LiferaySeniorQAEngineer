@@ -1,7 +1,25 @@
-Feature: Login actions
+Feature: Testing automation
 
   Background:
     Given the user visits the login website
+
+  Scenario Outline: Checkout Complete - Happy Path
+    Given the login done correctly "standard_user" and "secret_sauce"
+    When the user adds one product to cart through inventory page
+    And the user clicks on shopping cart
+    And the user accepts in Your Cart page
+    And the user inserts the First Name <First Name>
+    And the user inserts the Last Name <Last Name>
+    And the user inserts the ZipCode <Zip/PostalCode>
+    And the user clicks on Continue button in Checkout: Your Information page
+    And the user clicks on Finish button in Checkout: Overview page
+    Then the order is complete and success message is shown
+
+    Examples:
+      | First Name | Last Name | Zip/PostalCode |
+      | Tommaso    | Perilli   | 70132          |
+      | Francesco  | Rossi     | 70132          |
+
 
   Scenario Outline: Login - Happy path
     When the user inserts the username <username>
@@ -12,6 +30,7 @@ Feature: Login actions
     Examples:
       | username      | password     |
       | standard_user | secret_sauce |
+
 
   Scenario Outline: Login - Negative Path - Missing Username
     When the user inserts the password <password>
@@ -36,7 +55,6 @@ Feature: Login actions
     When the user clicks on login button
     Then Missing username message is shown
 
-
   Scenario Outline: Login - Negative Path - User locked
     When the user inserts the username <username>
     When the user inserts the password <password>
@@ -47,3 +65,7 @@ Feature: Login actions
       | username        | password     |
       | locked_out_user | secret_sauce |
 
+  Scenario: Logout - Happy Path
+    Given the login done correctly "standard_user" and "secret_sauce"
+    When the user clicks on Logout
+    Then the login page is visible correctly

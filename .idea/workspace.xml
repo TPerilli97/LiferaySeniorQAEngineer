@@ -5,20 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="87543214-deee-49c1-860d-661e06b93c71" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/drivers/chromedriver.exe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/stepDefinitions/Checkout_Steps.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/stepDefinitions/Login_Steps.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/stepDefinitions/Logout_Steps.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/features/checkout.feature" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/features/login.feature" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/features/logout.feature" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/stepDefinitions/Demo_Steps.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/features/Demo.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/stepDefinitions/Checkout_Steps.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/stepDefinitions/Login_Steps.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/stepDefinitions/Logout_Steps.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/features/checkout.feature" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/features/login.feature" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/features/logout.feature" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +59,7 @@
       <recent name="C:\Users\Tommaso Perilli\Desktop\LiferayAssessment\src\main\java\drivers" />
     </key>
   </component>
-  <component name="RunManager" selected="Cucumber Java.Feature: logout">
+  <component name="RunManager" selected="Cucumber Java.Scenario: Checkout Complete - Happy Path (2)">
     <configuration default="true" type="AZURE_FUNCTION_SUPPORT" factoryName="Run Functions">
       <option name="appName" />
       <option name="appServicePlanName" />
@@ -95,14 +92,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Feature: login" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+    <configuration name="Feature: Demo" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="5" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/features/login.feature" />
-      <option name="GLUE" value="stepDefinitions" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/features/Demo.feature" />
       <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
       <module name="LiferayAssessment" />
       <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter" />
-      <option name="SUGGESTED_NAME" value="Feature: login" />
+      <option name="SUGGESTED_NAME" value="Feature: Demo" />
       <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
       <extension name="coverage">
         <pattern>
@@ -133,15 +129,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Scenario: Login - Negative Path - Missing Password and Username" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+    <configuration name="Scenario: Checkout Complete - Happy Path (1)" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="5" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/features/login.feature" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/features/demo.feature" />
       <option name="GLUE" value="stepDefinitions" />
       <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
       <module name="LiferayAssessment" />
-      <option name="NAME_FILTER" value="^Login \- Negative Path \- Missing Password and Username$" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Login \- Negative Path \- Missing Password and Username$&quot;" />
-      <option name="SUGGESTED_NAME" value="Scenario: Login - Negative Path - Missing Password and Username" />
+      <option name="NAME_FILTER" value="^Checkout Complete \- Happy Path$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Checkout Complete \- Happy Path$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: Checkout Complete - Happy Path" />
       <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
       <extension name="coverage">
         <pattern>
@@ -153,15 +149,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Scenario: Login - Negative Path - User locked" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+    <configuration name="Scenario: Checkout Complete - Happy Path (2)" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="5" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/features/login.feature" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/features/Demo.feature" />
       <option name="GLUE" value="stepDefinitions" />
       <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
       <module name="LiferayAssessment" />
-      <option name="NAME_FILTER" value="^Login \- Negative Path \- User locked$" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Login \- Negative Path \- User locked$&quot;" />
-      <option name="SUGGESTED_NAME" value="Scenario: Login - Negative Path - User locked" />
+      <option name="NAME_FILTER" value="^Checkout Complete \- Happy Path$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Checkout Complete \- Happy Path$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: Checkout Complete - Happy Path" />
       <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
       <extension name="coverage">
         <pattern>
@@ -173,15 +169,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Scenario: Logout - Happy Path" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+    <configuration name="Scenario: Checkout Complete - Happy Path" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="5" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/features/logout.feature" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/features/checkout.feature" />
       <option name="GLUE" value="stepDefinitions" />
       <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
       <module name="LiferayAssessment" />
-      <option name="NAME_FILTER" value="^Logout \- Happy Path$" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Logout \- Happy Path$&quot;" />
-      <option name="SUGGESTED_NAME" value="Scenario: Logout - Happy Path" />
+      <option name="NAME_FILTER" value="^Checkout Complete \- Happy Path$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Checkout Complete \- Happy Path$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: Checkout Complete - Happy Path" />
       <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
       <extension name="coverage">
         <pattern>
@@ -194,19 +190,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Cucumber Java.Feature: login" />
+      <item itemvalue="Cucumber Java.Feature: Demo" />
       <item itemvalue="Cucumber Java.Feature: logout" />
-      <item itemvalue="Cucumber Java.Scenario: Login - Negative Path - Missing Password and Username" />
-      <item itemvalue="Cucumber Java.Scenario: Login - Negative Path - User locked" />
-      <item itemvalue="Cucumber Java.Scenario: Logout - Happy Path" />
+      <item itemvalue="Cucumber Java.Scenario: Checkout Complete - Happy Path" />
+      <item itemvalue="Cucumber Java.Scenario: Checkout Complete - Happy Path (1)" />
+      <item itemvalue="Cucumber Java.Scenario: Checkout Complete - Happy Path (2)" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Cucumber Java.Scenario: Checkout Complete - Happy Path (2)" />
+        <item itemvalue="Cucumber Java.Feature: Demo" />
+        <item itemvalue="Cucumber Java.Scenario: Checkout Complete - Happy Path (1)" />
+        <item itemvalue="Cucumber Java.Scenario: Checkout Complete - Happy Path" />
         <item itemvalue="Cucumber Java.Feature: logout" />
-        <item itemvalue="Cucumber Java.Scenario: Logout - Happy Path" />
-        <item itemvalue="Cucumber Java.Feature: login" />
-        <item itemvalue="Cucumber Java.Scenario: Login - Negative Path - User locked" />
-        <item itemvalue="Cucumber Java.Scenario: Login - Negative Path - Missing Password and Username" />
       </list>
     </recent_temporary>
   </component>
