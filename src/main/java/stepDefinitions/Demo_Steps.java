@@ -121,8 +121,8 @@ public class Demo_Steps {
 
     @When("the user adds one product to cart through inventory page")
     public void the_user_adds_one_product_to_cart_through_inventory_page() {
-        List<WebElement> inventoryItems = driver.findElements(By.className("inventory_item"));
-
+        List<WebElement> inventoryItems = driver.findElements(By.className("btn btn_primary btn_small btn_inventory"));
+        inventoryItems.get(0).click();//first element of a list
     }
 
     @And("the user clicks on shopping cart")
