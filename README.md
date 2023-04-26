@@ -8,3 +8,5 @@ This GitHub repository contains following things:
 3- Bugs
 4- Test Plan
 5- Maven Project with Selenium Framework and Java
+
+Created by: Tommaso Perilli
