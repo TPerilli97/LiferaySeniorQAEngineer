@@ -14,14 +14,22 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 
-import java.util.List;
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
+
+import static java.lang.Thread.sleep;
 
 
 public class Demo_Steps {
 
-
     private WebDriver driver;
+    private WebElement addToCartButtons;
+    private String itemsPrice;
+    private WebElement removeButtons;
+
+    private String titleItems;
+
+    private String descriptionItems;
 
     @Before
     public void setup() {
@@ -30,7 +38,7 @@ public class Demo_Steps {
         chromeOptions.setPageLoadStrategy(PageLoadStrategy.NORMAL);
         driver = new ChromeDriver(chromeOptions);
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
     }
 
     @After
@@ -120,51 +128,123 @@ public class Demo_Steps {
     }
 
     @When("the user adds one product to cart through inventory page")
-    public void the_user_adds_one_product_to_cart_through_inventory_page() {
-        List<WebElement> inventoryItems = driver.findElements(By.className("btn btn_primary btn_small btn_inventory"));
-        inventoryItems.get(0).click();//first element of a list
+    public void the_user_adds_one_product_to_cart_through_inventory_page() throws InterruptedException {
+
+        addToCartButtons = driver.findElement(By.xpath("//button[@id='add-to-cart-sauce-labs-backpack']"));
+        itemsPrice = driver.findElement(By.xpath("//div[normalize-space()='$29.99']")).getText();
+        titleItems = driver.findElement(By.xpath("//div[normalize-space()='Sauce Labs Backpack']")).getText();
+        descriptionItems = driver.findElement(By.xpath("//div[normalize-space()='carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.']")).getText();
+
+        addToCartButtons.click();//first element of a list
+
+        sleep(3000);
+
+        removeButtons = driver.findElement(By.xpath("//button[@id='remove-sauce-labs-backpack']"));
+        WebElement shoppingCartBadge = driver.findElement(By.xpath("//span[@class='shopping_cart_badge']"));
+        //Assertion
+        Assert.assertTrue(removeButtons.isDisplayed(), "Remove button is not displayed");
+        Assert.assertTrue(shoppingCartBadge.isDisplayed(), "Shopping cart badge is not displayed");
+        Assert.assertEquals(shoppingCartBadge.getText(), "1", "Shopping cart badge has wrong value");
+
     }
 
     @And("the user clicks on shopping cart")
-    public void the_user_clicks_on_shopping_cart() {
-
+    public void the_user_clicks_on_shopping_cart() throws InterruptedException {
+        WebElement shoppingCart = driver.findElement(By.xpath("//a[@class='shopping_cart_link']"));
+        shoppingCart.click();
+        sleep(3000);
     }
 
     @And("^the user inserts the ZipCode ([^\"]*)$")
-    public void the_user_inserts_the_zip_code(Integer zipCode) {
-
+    public void the_user_inserts_the_zip_code(String zipCode) {
+        WebElement ZipCode = driver.findElement(By.xpath("//input[@id='postal-code']"));
+        ZipCode.sendKeys(zipCode);
     }
 
     @And("^the user inserts the First Name ([^\"]*)$")
     public void the_user_inserts_the_first_name(String firstName) {
-
+        WebElement FirstName = driver.findElement(By.xpath("//input[@id='first-name']"));
+        FirstName.sendKeys(firstName);
     }
 
     @And("^the user inserts the Last Name ([^\"]*)$")
     public void the_user_inserts_the_last_name(String lastName) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        WebElement LastName = driver.findElement(By.xpath("//input[@id='last-name']"));
+        LastName.sendKeys(lastName);
     }
 
     @When("the user clicks on Continue button in Checkout: Your Information page")
     public void the_user_clicks_on_continue_button_in_checkout_your_information_page() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        WebElement Continue = driver.findElement(By.xpath("//input[@id='continue']"));
+        Continue.click();
     }
 
     @When("the user clicks on Finish button in Checkout: Overview page")
     public void the_user_clicks_on_finish_button_in_checkout_overview_page() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
+        //Assertion
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@class='inventory_item_name']")).getText(), titleItems, "Titles are not matching at the end of process");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@class='inventory_item_desc']")).getText(), descriptionItems, "Description are not matching");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@class='inventory_item_price']")).getText(), itemsPrice, "Prices are not matching");
+
+        //Getting the element for prices assertion: Total item and tax
+        WebElement itemTotalElement = driver.findElement(By.xpath("//div[@class='summary_subtotal_label']"));
+        String itemTotal = itemTotalElement.getText().substring(itemTotalElement.getText().indexOf('$'));
+
+        Assert.assertEquals(itemTotal, itemsPrice, "the prices are not matching");
+        itemTotal = itemTotal.substring(itemTotal.indexOf('$')+1);
+
+        WebElement taxElement = driver.findElement(By.xpath("//div[@class='summary_tax_label']"));
+        String tax = taxElement.getText().substring(taxElement.getText().indexOf('$'));
+
+        tax = tax.substring(tax.indexOf('$')+1);
+
+        WebElement totalElement = driver.findElement(By.xpath("//div[@class='summary_info_label summary_total_label']"));
+        String total = totalElement.getText().substring(totalElement.getText().indexOf('$')+1);
+
+        //From string to float to perform addiction
+        float add = Float.parseFloat(tax)+Float.parseFloat(itemTotal);
+
+        Assert.assertEquals(total,String.valueOf(add));
+
+
+        WebElement finish = driver.findElement(By.xpath("//button[@id='finish']"));
+        finish.click();
+
     }
 
     @Then("the order is complete and success message is shown")
     public void the_order_is_complete_and_success_message_is_shown() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
+        Assert.assertTrue(driver.findElement(By.xpath("//img[@alt='Pony Express']")).isDisplayed(),"The pony express logo is not visible");
+        Assert.assertEquals(driver.findElement(By.xpath("//h2[normalize-space()='Thank you for your order!']")).getText(),"Thank you for your order!","Thank you message is different");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@class='complete-text']")).getText(),"Your order has been dispatched, and will arrive just as fast as the pony can get there!","Complete message is different");
+        Assert.assertTrue(driver.findElement(By.xpath("//button[@id='back-to-products']")).isDisplayed(),"Back to product button is not displayed");
+
+        WebElement backToProductButton = driver.findElement(By.xpath("//button[@id='back-to-products']"));
+
+        backToProductButton.click();
+
+        try{
+            WebElement shoppingCartBadge = driver.findElement(By.xpath("//span[@class='shopping_cart_badge']"));
+            Assert.fail();
+        }catch (Exception e){
+            Assert.assertTrue(true);
+        }
     }
 
     @And("the user accepts in Your Cart page")
-    public void theUserAcceptsInYourCartPage() {
+    public void theUserAcceptsInYourCartPage() throws InterruptedException {
+        //Assertion before going on
+        sleep(2000);
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@class='inventory_item_name']")).getText(), titleItems, "the product added to cart is not the same presents in the cart");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@class='inventory_item_price']")).getText(), itemsPrice, "the prices are not matching in cart page");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@class='inventory_item_desc']")).getText(), descriptionItems, "descriptions are not matching");
+        Assert.assertTrue(driver.findElement(By.xpath("//button[@id='continue-shopping']")).isDisplayed(), "Continue shopping button is not displayed");
+
+        WebElement checkoutButton = driver.findElement(By.xpath("//button[@id='checkout']"));
+        checkoutButton.click();
+
+
     }
 }

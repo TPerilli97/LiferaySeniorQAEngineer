@@ -18,7 +18,6 @@ Feature: Testing automation
     Examples:
       | First Name | Last Name | Zip/PostalCode |
       | Tommaso    | Perilli   | 70132          |
-      | Francesco  | Rossi     | 70132          |
 
 
   Scenario Outline: Login - Happy path
